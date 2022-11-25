@@ -4,13 +4,14 @@ use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
 entity topo is
+    port(
     reqLeit     : in std_logic;
     ack_entrada : in std_logic;
-    endereco    : in std_logic_vector(4 downto 0);
+    endereco    : in INTEGER RANGE 0 TO 15;
     ack_saida   : out std_logic;
     dadoPrt     : out std_logic;
-    resposta    : out std_logic_vector(7 downto 0);
-
+    resposta    : out std_logic_vector(7 downto 0)
+    );
 end entity;
 
 architecture behavior of topo is
@@ -25,7 +26,7 @@ architecture behavior of topo is
 
     component memory is port (
         ler         : in std_logic;
-        endereco    : in std_logic_vector(4 downto 0);
+        endereco    : in INTEGER RANGE 0 TO 15;
         resposta    : out std_logic_vector(7 downto 0));
     end component;
 

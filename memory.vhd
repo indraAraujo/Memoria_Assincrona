@@ -6,8 +6,8 @@ use ieee.std_logic_arith.all;
 entity memory is
     port(
         ler         : in std_logic;
-        endereco    : in std_logic_vector(4 downto 0);
-        resposta    : out std_logic_vector(7 downto 0);
+        endereco    : in INTEGER RANGE 0 TO 15;
+        resposta    : out std_logic_vector(7 downto 0)
     );
 end entity;
 
@@ -38,11 +38,11 @@ begin
 
     process(ler)
         begin
-            if(ler=='1'){
-                resposta <= memory_int[endereco];
-            }else{
-                resposta <= '0';
-            }
+            if (ler = '1') then
+                resposta <= memory_inst(endereco);
+            else
+                resposta <= "00000000";
+            end if;
         end process;
         
 end behavior;

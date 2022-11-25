@@ -23,28 +23,29 @@ begin
     process(reqLeit, ack_entrada)
         begin
 
-            if(estado_atual = "0000" && reqLeit='0'){
+            if(estado_atual = "0000" && reqLeit='0')then
             
-            } elsif(estado_atual = "0000" && reqLeit='1'){
+                elsif(estado_atual = "0000" && reqLeit='1')
                 prox_estado <= "0001"
-            }
+            end if;
             
-            if (estado_atual = "0001" && reqLeit='1' && ack_entrada='0'){
+            if (estado_atual = "0001" && reqLeit='1' && ack_entrada='0')
                 ack_saida <= '1';
                 ler <= '0';
                 prox_estado <="0010";
 
-            } elsif (estado_atual = "0010" && reqLeit='0' && ack_entrada='0'){
+            elsif (estado_atual = "0010" && reqLeit='0' && ack_entrada='0')
                 ack_saida <= '0';
                 ler <= '1';
                 dadoPrt <= '1';
                 prox_estado <="0011";
 
-            } elsif (estado_atual = "0011" && reqLeit='0' && ack_entrada='1'){
+            elsif (estado_atual = "0011" && reqLeit='0' && ack_entrada='1')
                 dadoPrt <= '0';
                 ler <= '0';
                 prox_estado <= "0000";
-            }
+            
+            end if;
 
             estado_atual <= prox_estado;
 
