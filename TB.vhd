@@ -20,8 +20,8 @@ architecture behavior of TB is
     signal Requisita_Leitura    : std_logic:='0';
     signal ack_entrada          : std_logic:='0';
     signal endereco             : INTEGER RANGE 0 TO 15:=0;
-    signal ack_saida_TB         : std_logic;
-    signal dadoPrt_TB           : std_logic;
+    signal ack_saida_TB         : std_logic:='0';
+    signal dadoPrt_TB           : std_logic:='0';
     signal resposta_TB          : std_logic_vector(7 downto 0);
 
 begin
