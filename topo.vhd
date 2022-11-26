@@ -5,12 +5,12 @@ use ieee.std_logic_arith.all;
 
 entity topo is
     port(
-    reqLeit     : in std_logic;
-    ack_entrada : in std_logic;
-    endereco    : in INTEGER RANGE 0 TO 15;
-    ack_saida   : out std_logic;
-    dadoPrt     : out std_logic;
-    resposta    : out std_logic_vector(7 downto 0)
+        reqLeit     : in std_logic;
+        ack_entrada : in std_logic;
+        endereco    : in INTEGER RANGE 0 TO 15;
+        ack_saida   : out std_logic;
+        dadoPrt     : out std_logic;
+        resposta    : out std_logic_vector(7 downto 0)
     );
 end entity;
 
