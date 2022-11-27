@@ -5,8 +5,8 @@ use ieee.std_logic_arith.all;
 
 entity topo is
     port(
-        reqLeit     : in std_logic;
-        ack_entrada : in std_logic;
+        reqLeit_topo     : in std_logic;
+        ack_entrada_topo : in std_logic;
         endereco    : in INTEGER RANGE 0 TO 15;
         ack_saida   : out std_logic;
         dadoPrt     : out std_logic;
@@ -34,8 +34,8 @@ architecture behavior of topo is
 
 begin
     mef: fsm port map(
-		reqLeit     => reqLeit,
-        ack_entrada => ack_entrada,
+		reqLeit     => reqLeit_topo,
+        ack_entrada => ack_entrada_topo,
         ack_saida   => ack_saida,
         dadoPrt     => dadoPrt,
         ler         => ler_topo);
