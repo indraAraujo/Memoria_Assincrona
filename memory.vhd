@@ -36,6 +36,8 @@ CONSTANT memory_inst : matriz :=
 
 begin
 
+    --resposta <= memory_inst(endereco);
+
     process(ler)
         begin
             if (ler = '1') then

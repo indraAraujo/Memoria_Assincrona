@@ -6,15 +6,15 @@ entity topo is
     port(
         reqLeit_topo     : in std_logic;
         ack_entrada_topo : in std_logic;
-        endereco    : in INTEGER RANGE 0 TO 15;
-        ack_saida   : out std_logic;
-        dadoPrt     : out std_logic;
-        resposta    : out std_logic_vector(7 downto 0)
+        endereco_topo    : in INTEGER RANGE 0 TO 15;
+        ack_saida_topo   : out std_logic;
+        dadoPrt_topo     : out std_logic;
+        resposta_topo    : out std_logic_vector(7 downto 0)
     );
 end entity;
 architecture behavior of topo is
 
-component memory_fsm is
+component fsm is
 	port(
         reqLeit     : in std_logic;
         ack_entrada : in std_logic;
@@ -35,19 +35,9 @@ end component;
 signal ler_topo: std_logic;
 
 begin
-    mef: fsm port map(
-		reqLeit     => reqLeit_topo,
-        ack_entrada => ack_entrada_topo,
-        ack_saida   => ack_saida,
-        dadoPrt     => dadoPrt,
-        ler         => ler_topo);
 
-    mem: memory port map(
-        ler         => ler_topo,
-        endereco    => endereco,
-        resposta    => resposta );
 
-inst_fsm: memory_fsm
+inst_fsm: fsm
 	port map(
             reqLeit     => reqLeit_topo,
             ack_entrada => ack_entrada_topo,

@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
-entity memory_fsm is
+entity fsm is
 	port(
             reqLeit	    : in std_logic;
             ack_entrada : in std_logic;
@@ -12,7 +12,7 @@ entity memory_fsm is
 		);
 end entity;
 
-architecture behavior of memory_fsm is
+architecture behavior of fsm is
 type state_name is (zero, first, second, third); -- nome dos estados
 signal state, next_state : state_name;  -- tipo de dado dos estados
 begin
@@ -28,19 +28,19 @@ process (state)
 begin
 	case state is
 		when zero =>
-			ler <= '0;
+			ler <= '0';
             ack_saida <= '0';
             dadoPrt <= '0';
 		when first =>
-            ler <= '0;
+            ler <= '0';
             ack_saida <= '1';
             dadoPrt <= '0';
 		when second =>
-            ler <= '0;
-            ack_saida <= '1';
+            ler <= '1';
+            ack_saida <= '0';
             dadoPrt <= '1';
 		when third =>
-            ler <= '0;
+            ler <= '0';
             ack_saida <= '0';
             dadoPrt <= '0';
 		end case;

@@ -11,10 +11,10 @@ architecture behavior of TB is
     component topo is port (
         reqLeit_topo     : in std_logic;
         ack_entrada_topo : in std_logic;
-        endereco    : in INTEGER RANGE 0 TO 15;
-        ack_saida   : out std_logic;
-        dadoPrt     : out std_logic;
-        resposta    : out std_logic_vector(7 downto 0));
+        endereco_topo    : in INTEGER RANGE 0 TO 15;
+        ack_saida_topo   : out std_logic;
+        dadoPrt_topo     : out std_logic;
+        resposta_topo    : out std_logic_vector(7 downto 0));
     end component;
 
     signal Requisita_Leitura    : std_logic:='0';
@@ -28,20 +28,21 @@ begin
     memassc: topo port map(
 		reqLeit_topo     => Requisita_Leitura,
         ack_entrada_topo => ack_entrada,
-        endereco    => endereco,
-        ack_saida   => ack_saida_TB,
-        dadoPrt     => dadoPrt_TB,
-        resposta    => resposta_TB);
+        endereco_topo    => endereco,
+        ack_saida_topo   => ack_saida_TB,
+        dadoPrt_topo     => dadoPrt_TB,
+        resposta_topo    => resposta_TB);
+
     process
         begin
             wait for 10 ns;
-                endereco            <=  1;
+                endereco            <=  0;
                 Requisita_Leitura   <=  '1';
                 ack_entrada         <=  '0';
             
             wait for 50 ns;
                 if(ack_saida_TB = '1') then
-                    endereco            <=0;
+                    endereco            <=  1;
                     Requisita_Leitura   <= '0';
                 end if;
             wait for 50 ns;
